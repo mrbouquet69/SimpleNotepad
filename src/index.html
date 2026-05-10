@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<html <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Minimal Notepad</title>
-
-<link rel="icon" href="data:image/svg+xml,
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimal Notepad</title>
+    <link rel="icon" href="data:image/svg+xml,
 %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E
 %3Ctext y='52' font-size='52'%3E🗒️%3C/text%3E
 %3C/svg%3E">
-
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <textarea id="note" placeholder="Start typing..."></textarea>
-
-    <script src="script.js"></script>
-
+    <script>
+        const note = document.getElementById("note");
+        note.value = localStorage.getItem("minimal-note") || "";
+        note.addEventListener("input", () => {
+            localStorage.setItem("minimal-note", note.value);
+        });
+    </script>
 </body>
-
 </html>
